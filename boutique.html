@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Boutique – Leto la Saint-Bernard</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- Stripe -->
+  <script src="https://js.stripe.com/v3/"></script>
+
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #f9f9f9;
+    }
+
+    header {
+      background: #8bc34a;
+      color: white;
+      padding: 30px 20px;
+      text-align: center;
+    }
+
+    header a {
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+      display: inline-block;
+      margin-top: 10px;
+    }
+
+    .produits {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 25px;
+      max-width: 1000px;
+      margin: 50px auto;
+      padding: 0 20px;
+    }
+
+    .produit {
+      background: white;
+      border-radius: 18px;
+      padding: 25px;
+      box-shadow: 0 6px 20px rgba(0,0,0,0.1);
+      text-align: center;
+      transition: transform 0.3s ease;
+    }
+
+    .produit:hover {
+      transform: translateY(-5px);
+    }
+
+    .produit img {
+      width: 100%;
+      max-width: 300px;
+      border-radius: 14px;
+      margin-bottom: 15px;
+    }
+
+    .prix {
+      font-size: 1.4em;
+      font-weight: bold;
+      color: #689f38;
+      margin: 15px 0;
+    }
+
+    button, a.btn {
+      background: #8bc34a;
+      border: none;
+      padding: 14px 24px;
+      border-radius: 30px;
+      color: white;
+      font-size: 1.05em;
+      font-weight: bold;
+      cursor: pointer;
+      text-decoration: none;
+      display: inline-block;
+    }
+
+    footer {
+      background: #333;
+      color: white;
+      text-align: center;
+      padding: 35px 20px;
+      margin-top: 60px;
+    }
+  </style>
+</head>
+
+<body>
+
+<header>
+  <h1>🛍️ Boutique de Leto</h1>
+  <p>Balades & produits officiels de Leto 🐶</p>
+  <a href="index.html">⬅ Retour à l’accueil</a>
+</header>
+
+<section class="produits">
+
+  <!-- BALADE -->
+  <div class="produit">
+    <img src="superbaladeuse.jpg.jpg" alt="Balade avec Leto">
+    <h3>Balade de 30 minutes + shooting photo</h3>
+    <p>Un moment doux et unique en compagnie de Leto 🐾</p>
+    <div class="prix">39 CHF</div>
+    <a href="reservation.html" class="btn">Réserver la balade 🐶</a>
+  </div>
+
+  <!-- CALENDRIER -->
+  <div class="produit">
+    <img src="calendrierleto26.jpg.jpg" alt="Calendrier Leto 2026">
+    <h3>Calendrier Leto 2026</h3>
+    <p>12 mois de douceur et de sourires avec Leto 📅</p>
+    <div class="prix">29 CHF</div>
+    <button id="acheterCalendrier">Acheter 📅</button>
+  </div>
+
+</section>
+
+<footer>
+  <p>© 2026 – Leto la Saint-Bernard – Genève 🇨🇭</p>
+  <p>Paiement sécurisé via Stripe (Carte & TWINT)</p>
+</footer>
+
+<script>
+  const stripe = Stripe("pk_live_51SloS2AcRxA3D0tOD4qCjyOcHE6IQMJs1VDraqtQlSVw1n4lkWTAfNZK3vvig2etyWOiBu8YYfJluE0tkQK9sFBF00EMLbBc4R");
+
+  document.getElementById("acheterCalendrier").addEventListener("click", async () => {
+    try {
+      const response = await fetch("/api/create-calendar-session", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" }
+      });
+
+      const data = await response.json();
+
+      if (data.id) {
+        stripe.redirectToCheckout({ sessionId: data.id });
+      } else {
+        alert("Erreur lors du paiement.");
+      }
+    } catch (err) {
+      console.error(err);
+      alert("Impossible de contacter Stripe.");
+    }
+  });
+</script>
+
+</body>
+</html>

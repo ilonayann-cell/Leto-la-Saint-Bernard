@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Gardiennage – Leto la Saint-Bernard</title>
+
+<style>
+body {
+  font-family: Arial, sans-serif;
+  background: #fffaf4;
+  margin: 0;
+  color: #333;
+}
+
+header {
+  background: linear-gradient(135deg, #8bc34a, #aed581);
+  color: white;
+  text-align: center;
+  padding: 40px 20px;
+}
+
+header a {
+  color: white;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+h1, h2, h3 {
+  margin: 0 0 15px;
+}
+
+h2 {
+  color: #689f38;
+  margin-top: 40px;
+}
+
+p {
+  line-height: 1.5;
+}
+
+.btn {
+  display: inline-block;
+  background: #8bc34a;
+  color: white;
+  padding: 12px 28px;
+  border-radius: 30px;
+  font-weight: bold;
+  text-decoration: none;
+  cursor: pointer;
+  margin-top: 10px;
+}
+
+.btn:hover {
+  opacity: 0.9;
+}
+
+.container {
+  max-width: 900px;
+  margin: 30px auto;
+  background: white;
+  padding: 30px;
+  border-radius: 18px;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.12);
+}
+
+input, select, textarea {
+  width: 100%;
+  padding: 10px;
+  margin-top: 6px;
+  margin-bottom: 15px;
+  border-radius: 10px;
+  border: 1px solid #ccc;
+  font-size: 1em;
+}
+
+label {
+  font-weight: bold;
+}
+
+.advantages {
+  display: grid;
+  grid-template-columns: repeat(auto-fit,minmax(250px,1fr));
+  gap: 15px;
+  margin-top: 20px;
+}
+
+.adv {
+  background: #f4f4f4;
+  padding: 15px;
+  border-radius: 12px;
+  text-align: center;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+}
+
+.table-tarifs {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+
+.table-tarifs th, .table-tarifs td {
+  border: 1px solid #ccc;
+  padding: 12px;
+  text-align: center;
+}
+
+.table-tarifs th {
+  background: #8bc34a;
+  color: white;
+}
+
+footer {
+  background: #333;
+  color: white;
+  text-align: center;
+  padding: 35px 20px;
+  margin-top: 40px;
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <h1>🏡 Gardiennage de chien avec Leto</h1>
+  <p>Un séjour sûr, calme et chaleureux pour votre chien 🐾</p>
+  <p><a href="index.html">⬅ Retour à l’accueil</a></p>
+</header>
+
+<section class="container">
+
+<h2>💚 Avantages du gardiennage</h2>
+<div class="advantages">
+  <div class="adv">🔥 Logement chauffé et confortable</div>
+  <div class="adv">👨‍👩‍👧‍👦 Votre chien vit au sein d’une famille</div>
+  <div class="adv">🚫 Pas de cage, pas d’aboiements incessants</div>
+  <div class="adv">🐕 Jamais seul</div>
+  <div class="adv">🌳 Promenades longues & défoulement extérieur</div>
+  <div class="adv">🐶 Compagnie d’un Saint-Bernard bien éduqué</div>
+  <div class="adv">⭐ Maximum 4 chiens à la fois</div>
+</div>
+
+<h2>💰 Tarifs</h2>
+<p>Tarifs selon le poids et le nombre de nuits :</p>
+<table class="table-tarifs">
+  <tr>
+    <th>Poids du chien</th>
+    <th>1-2 nuits</th>
+    <th>3-4 nuits</th>
+    <th>5 nuits et plus</th>
+  </tr>
+  <tr>
+    <td>0-10 kg</td>
+    <td>50 CHF/nuit</td>
+    <td>45 CHF/nuit</td>
+    <td>40 CHF/nuit</td>
+  </tr>
+  <tr>
+    <td>11-25 kg</td>
+    <td>60 CHF/nuit</td>
+    <td>55 CHF/nuit</td>
+    <td>50 CHF/nuit</td>
+  </tr>
+  <tr>
+    <td>26-40 kg</td>
+    <td>70 CHF/nuit</td>
+    <td>65 CHF/nuit</td>
+    <td>60 CHF/nuit</td>
+  </tr>
+  <tr>
+    <td>41+ kg</td>
+    <td>80 CHF/nuit</td>
+    <td>75 CHF/nuit</td>
+    <td>70 CHF/nuit</td>
+  </tr>
+</table>
+
+<h2>📄 Contrat à télécharger</h2>
+<p>Avant de réserver, téléchargez et signez notre contrat de gardiennage :</p>
+<a href="contrat_gardiennage.pdf" target="_blank" class="btn">📄 Télécharger le contrat</a>
+
+<h2>📋 Demande de réservation</h2>
+<p>Merci de remplir le formulaire ci-dessous et de joindre le contrat signé :</p>
+
+<form action="https://formspree.io/f/xgooekkk" method="POST" enctype="multipart/form-data">
+
+  <label>Nom complet *</label>
+  <input type="text" name="nom" placeholder="Nom complet" required>
+
+  <label>Email *</label>
+  <input type="email" name="email" placeholder="Email" required>
+
+  <label>Poids du chien *</label>
+  <input type="text" name="poids" placeholder="Ex: 8 kg" required>
+
+  <label>Nombre de nuits *</label>
+  <select name="nuits" required>
+    <option value="">-- Sélectionnez --</option>
+    <option value="1-2 nuits">1-2 nuits</option>
+    <option value="3-4 nuits">3-4 nuits</option>
+    <option value="5+ nuits">5 nuits et plus</option>
+  </select>
+
+  <label>Dates souhaitées *</label>
+  <input type="text" name="dates" placeholder="Ex: du 10 au 15 janvier" required>
+
+  <label>Contrat signé (PDF) *</label>
+  <input type="file" name="contrat" accept=".pdf" required>
+
+  <label>
+    <input type="checkbox" name="contrat_ok" required>
+    J’ai téléchargé et signé le contrat
+  </label>
+
+  <button type="submit" class="btn">Demander une réservation 🐾</button>
+</form>
+
+</section>
+
+<footer>
+<p>© 2026 – Leto la Saint-Bernard – Genève 🇨🇭</p>
+</footer>
+
+</body>
+</html>

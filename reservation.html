@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<title>Réserver une balade avec Leto</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- Stripe -->
+<script src="https://js.stripe.com/v3/"></script>
+
+<style>
+body {
+  font-family: Arial, sans-serif;
+  background: #f4f4f4;
+  margin: 0;
+}
+
+header {
+  background: #8bc34a;
+  color: white;
+  text-align: center;
+  padding: 35px 20px;
+}
+
+header a {
+  color: white;
+  text-decoration: none;
+  font-weight: bold;
+  display: inline-block;
+  margin-top: 15px;
+}
+
+.container {
+  max-width: 520px;
+  margin: 40px auto;
+  background: white;
+  padding: 30px;
+  border-radius: 18px;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.12);
+}
+
+label {
+  display: block;
+  margin-top: 18px;
+  font-weight: bold;
+}
+
+input {
+  width: 100%;
+  padding: 10px;
+  margin-top: 6px;
+  border-radius: 10px;
+  border: 1px solid #ccc;
+  font-size: 1em;
+}
+
+#heures {
+  margin-top: 10px;
+}
+
+#heures button {
+  margin: 5px;
+  padding: 10px 16px;
+  border-radius: 20px;
+  border: none;
+  cursor: pointer;
+  background: #eee;
+  font-weight: bold;
+}
+
+#heures button.active {
+  background: #8bc34a;
+  color: white;
+}
+
+button#payer {
+  margin-top: 30px;
+  width: 100%;
+  padding: 14px;
+  border-radius: 30px;
+  border: none;
+  background: #8bc34a;
+  color: white;
+  font-size: 1.1em;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+small {
+  display: block;
+  margin-top: 25px;
+  color: #555;
+  text-align: center;
+  line-height: 1.6;
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <h1>📅 Réserver une balade avec Leto</h1>
+  <p>Un moment doux, calme et unique avec un Saint-Bernard au grand cœur 🐾</p>
+
+  <a href="index.html">⬅ Retour à l’accueil</a>
+</header>
+
+<div class="container">
+
+  <label>Nom complet *</label>
+  <input id="nom" type="text" placeholder="Votre nom" required>
+
+  <label>Email *</label>
+  <input id="email" type="email" placeholder="Votre email" required>
+
+  <label>Date *</label>
+  <input id="date" type="date" required onchange="afficherHeures()">
+
+  <label>Heure *</label>
+  <div id="heures"></div>
+  <p id="heureChoisie" style="font-weight:bold;margin-top:10px;"></p>
+
+  <label style="margin-top:25px;">
+    <input type="checkbox" id="decharge" required>
+    J’accepte la décharge de responsabilité et reconnais participer à la balade sous ma propre responsabilité.
+  </label>
+
+  <button id="payer">Valider et payer 💳</button>
+
+  <small>
+    Les balades sont effectuées sous la responsabilité du client.<br><br>
+    Leto est un chien sociable et bienveillant. Toutefois, nous déclinons toute responsabilité
+    en cas d’accident, de blessure ou d’incident survenant durant la balade ou l’activité.
+  </small>
+
+</div>
+
+<script>
+/* Créneaux horaires */
+const heures = ["09:00","10:00","11:00","12:00","13:00","14:00","15:00","16:00","17:00"];
+let heureChoisie = null;
+
+function afficherHeures() {
+  const cont = document.getElementById("heures");
+  cont.innerHTML = "";
+  heureChoisie = null;
+  document.getElementById("heureChoisie").textContent = "";
+
+  heures.forEach(h => {
+    const btn = document.createElement("button");
+    btn.textContent = h;
+    btn.onclick = () => {
+      document.querySelectorAll("#heures button").forEach(b => b.classList.remove("active"));
+      btn.classList.add("active");
+      heureChoisie = h;
+      document.getElementById("heureChoisie").textContent = "🕒 Heure choisie : " + h;
+    };
+    cont.appendChild(btn);
+  });
+}
+
+/* Stripe – clé publique */
+const stripe = Stripe("pk_live_51SloS2AcRxA3D0tOD4qCjyOcHE6IQMJs1VDraqtQlSVw1n4lkWTAfNZK3vvig2etyWOiBu8YYfJluE0tkQK9sFBF00EMLbBc4R");
+
+document.getElementById("payer").addEventListener("click", async () => {
+  const nom = document.getElementById("nom").value.trim();
+  const email = document.getElementById("email").value.trim();
+  const date = document.getElementById("date").value;
+  const decharge = document.getElementById("decharge").checked;
+
+  if (!nom || !email || !date || !heureChoisie) {
+    alert("Merci de remplir tous les champs et de choisir une heure.");
+    return;
+  }
+
+  if (!decharge) {
+    alert("Vous devez accepter la décharge.");
+    return;
+  }
+
+  const response = await fetch("/api/create-reservation-session", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ nom, email, date, heure: heureChoisie })
+  });
+
+  const data = await response.json();
+
+  if (data.id) {
+    stripe.redirectToCheckout({ sessionId: data.id });
+  } else {
+    alert("Erreur lors de la création du paiement.");
+  }
+});
+</script>
+
+</body>
+</html>

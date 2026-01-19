@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Leto la Saint-Bernard – Balades & Boutique</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Balades canines à Genève avec Leto la Saint-Bernard.">
+
+  <style>
+    body {
+      margin: 0;
+      font-family: "Segoe UI", Arial, sans-serif;
+      background: #fffaf4;
+      color: #333;
+    }
+
+    /* HERO */
+    .hero {
+      position: relative;
+      height: 90vh;
+      background: url("letoaccueil.jpg.jpg") center/cover no-repeat;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      color: white;
+    }
+    .hero::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: rgba(0,0,0,0.45);
+    }
+    .hero-content {
+      position: relative;
+      z-index: 1;
+      max-width: 800px;
+      padding: 20px;
+    }
+    .hero h1 { font-size: 3em; margin-bottom:10px; }
+    .hero p { font-size:1.3em; margin-bottom:25px; }
+    a.btn {
+      display:inline-block;
+      background:#8bc34a;
+      color:white;
+      padding:14px 28px;
+      border-radius:30px;
+      text-decoration:none;
+      font-weight:bold;
+      margin:8px;
+      transition: all 0.2s ease;
+    }
+    a.btn:hover { opacity:0.9; transform:scale(1.05); }
+
+    /* SECTIONS */
+    section { padding:60px 20px; max-width:1100px; margin:auto; }
+    h2 { color:#689f38; text-align:center; margin-bottom:10px; }
+    .subtitle { text-align:center; margin-bottom:30px; color:#555; }
+
+    /* ABOUT */
+    .about { display:grid; grid-template-columns:repeat(auto-fit, minmax(280px,1fr)); gap:30px; align-items:center; }
+    .about img { width:100%; max-width:300px; border-radius:20px; display:block; margin:0 auto; }
+
+    /* CARDS */
+    .cards { display:grid; grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); gap:25px; }
+    .card {
+      background:white; border-radius:18px; padding:22px;
+      box-shadow:0 10px 25px rgba(0,0,0,0.08); text-align:center;
+      transition: all 0.3s ease;
+    }
+    .card img { width:100%; max-width:300px; height:auto; border-radius:14px; margin:0 auto 10px auto; }
+    .price { font-size:1.4em; font-weight:bold; color:#689f38; margin:10px 0; }
+    .card:hover { transform:translateY(-5px); box-shadow:0 10px 20px rgba(0,0,0,0.15); }
+
+    /* AVIS */
+    .avis-container { display:flex; flex-wrap:wrap; justify-content:center; gap:20px; margin-top:30px; }
+    .avis-card {
+      background:white; padding:20px; border-radius:15px; max-width:250px;
+      box-shadow:0 4px 12px rgba(0,0,0,0.1); text-align:center; transition:all 0.3s ease;
+    }
+    .avis-card:hover { transform:translateY(-5px); box-shadow:0 10px 20px rgba(0,0,0,0.15); }
+
+    /* GALERIE */
+    .slider-container { position:relative; max-width:700px; margin:40px auto; height:400px; overflow:hidden; border-radius:20px; }
+    .slider { width:100%; height:100%; position:relative; }
+    .slide { position:absolute; width:100%; height:100%; object-fit:cover; opacity:0; transition:opacity 1s ease; cursor:pointer; }
+    .slide.active { opacity:1; }
+    .slider-container button {
+      position:absolute; top:50%; transform:translateY(-50%);
+      background:#8bc34a; color:white; border:none; border-radius:30px;
+      padding:10px 20px; cursor:pointer; font-size:1.2em;
+    }
+    .prev { left:0; }
+    .next { right:0; }
+
+    /* CONTACT */
+    input, textarea { width:100%; padding:12px; margin:8px 0; border-radius:10px; border:1px solid #ccc; font-size:1em; }
+    button { background:#8bc34a; color:white; border:none; padding:12px 20px; border-radius:25px; cursor:pointer; font-size:1em; transition:all 0.2s ease; }
+    button:hover { opacity:0.9; transform:scale(1.05); }
+
+    /* FOOTER */
+    footer { background:#333; color:white; text-align:center; padding:35px 20px; }
+  </style>
+</head>
+
+<body>
+
+<!-- HERO -->
+<header class="hero">
+  <div class="hero-content">
+    <h1>🐶 Leto la Saint-Bernard</h1>
+    <p>Balades canines à Genève, douceur, nature et complicité</p>
+    <a href="reservation.html" class="btn">Réserver une balade 🐾</a>
+    <a href="boutique.html" class="btn">Voir la boutique 🛍️</a>
+    <a href="gardiennage.html" class="btn">Gardiennage 🏡</a>
+  </div>
+</header>
+
+<!-- ABOUT -->
+<section>
+  <h2>🐾 Qui est Leto ?</h2>
+  <div class="about">
+    <p>
+      Leto est une saint-bernard douce, calme et sociable.
+      Elle accompagne des balades conviviales à Genève,
+      dans le respect, la nature et la bonne humeur.
+    </p>
+    <img src="jesappelleleto.jpg.jpg" alt="Leto la Saint-Bernard">
+  </div>
+</section>
+
+<!-- BALADES -->
+<section>
+  <h2>🐾 Balades avec Leto</h2>
+  <div class="cards">
+    <div class="card">
+      <img src="superbaladeuse1.jpg.jpg" alt="Balade avec Leto">
+      <h3>Balade 30 min + shooting photo</h3>
+      <p>Une promenade douce et un souvenir photo.</p>
+      <div class="price">39 CHF</div>
+      <a href="reservation.html" class="btn">Réserver 🐶</a>
+    </div>
+  </div>
+</section>
+
+<!-- BOUTIQUE -->
+<section>
+  <h2>🛍️ Boutique</h2>
+  <p class="subtitle">Produits testés et approuvés par Leto</p>
+  <div class="cards">
+    <div class="card">
+      <img src="calendrierleto26.jpg.jpg" alt="Calendrier Leto 2026">
+      <h3>Calendrier Leto 2026</h3>
+      <div class="price">29 CHF</div>
+      <a href="boutique.html" class="btn">Acheter 📅</a>
+    </div>
+  </div>
+</section>
+
+<!-- GARDIENNAGE -->
+<section style="padding:60px 20px; text-align:center; background:#f9f9f9;">
+  <h2>🏡 Gardiennage</h2>
+  <p class="subtitle">Nous gardons jusqu’à 4 chiens à la fois avec soin et promenades.</p>
+  <a href="gardiennage.html" class="btn">En savoir plus 📝</a>
+</section>
+
+<!-- AVIS -->
+<section style="background:#f4f4f4;">
+  <h2>💬 Avis</h2>
+  <div class="avis-container">
+    <div class="avis-card">“Balade magique avec Leto.”<br><strong>Marie</strong></div>
+    <div class="avis-card">“Très doux, super photos.”<br><strong>Julien</strong></div>
+    <div class="avis-card">“Moment relaxant.”<br><strong>Sophie</strong></div>
+  </div>
+</section>
+
+<!-- INSTAGRAM -->
+<section id="instagram" style="padding:60px 20px; text-align:center; background:#fff;">
+  <h2>📸 Suivez Leto sur Instagram</h2>
+  <p style="max-width:500px; margin:20px auto; font-size:1.1em;">
+    Découvrez les balades, les coulisses, les photos trop mignonnes  
+    et la vie quotidienne de Leto 🐶💚
+  </p>
+  <a href="https://www.instagram.com/letothesaintbernard?igsh=YmdsNGNhb253aXBk" target="_blank" class="btn">📸 Voir Instagram de Leto</a>
+</section>
+
+<!-- GALERIE -->
+<section>
+  <h2>📸 Galerie</h2>
+  <div class="slider-container">
+    <button class="prev">◀</button>
+    <div class="slider">
+      <img src="galerie3.JPG" class="slide active">
+      <img src="galerie1.JPG" class="slide">
+      <img src="galerie4.JPG" class="slide">
+      <img src="galerie5.JPG" class="slide">
+    </div>
+    <button class="next">▶</button>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section>
+  <h2>📩 Contact</h2>
+  <form action="https://formspree.io/f/xgooekkk" method="POST" style="max-width:500px; margin:auto;">
+    <input type="text" name="nom" placeholder="Nom" required>
+    <input type="email" name="email" placeholder="Email" required>
+    <textarea name="message" placeholder="Message" required></textarea>
+    <button type="submit">Envoyer 📩</button>
+  </form>
+</section>
+
+<footer>
+  <p>© 2026 – Leto la Saint-Bernard – Genève 🇨🇭</p>
+  <p>Paiement sécurisé via Stripe & TWINT</p>
+</footer>
+
+<!-- SCRIPT GALERIE -->
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+  const slides = document.querySelectorAll(".slider .slide");
+  const prevBtn = document.querySelector(".prev");
+  const nextBtn = document.querySelector(".next");
+  let index = 0;
+
+  function showSlide(i) {
+    slides.forEach(slide => slide.classList.remove("active"));
+    slides[i].classList.add("active");
+  }
+
+  // Auto défilement
+  setInterval(() => {
+    index = (index + 1) % slides.length;
+    showSlide(index);
+  }, 3500);
+
+  // Boutons
+  prevBtn.addEventListener("click", () => {
+    index = (index - 1 + slides.length) % slides.length;
+    showSlide(index);
+  });
+  nextBtn.addEventListener("click", () => {
+    index = (index + 1) % slides.length;
+    showSlide(index);
+  });
+
+  // Zoom au clic (Lightbox simple)
+  slides.forEach(slide => {
+    slide.addEventListener("click", () => {
+      const overlay = document.createElement("div");
+      overlay.style.position = "fixed";
+      overlay.style.top = 0;
+      overlay.style.left = 0;
+      overlay.style.width = "100%";
+      overlay.style.height = "100%";
+      overlay.style.backgroundColor = "rgba(0,0,0,0.85)";
+      overlay.style.display = "flex";
+      overlay.style.alignItems = "center";
+      overlay.style.justifyContent = "center";
+      overlay.style.cursor = "zoom-out";
+      overlay.addEventListener("click", () => overlay.remove());
+
+      const img = document.createElement("img");
+      img.src = slide.src;
+      img.style.maxWidth = "90%";
+      img.style.maxHeight = "90%";
+      img.style.borderRadius = "20px";
+      overlay.appendChild(img);
+
+      document.body.appendChild(overlay);
+    });
+  });
+});
+</script>
+
+</body>
+</html>
